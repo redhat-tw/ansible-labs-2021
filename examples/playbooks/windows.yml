@@ -1,0 +1,20 @@
+---
+
+- name: Install IIS
+  hosts: windows
+  gather_facts: false
+  tasks:
+  - name: Install IIS
+    win_feature:
+      name:
+      - Web-Server
+      - Web-Common-Http
+      state: present # present or absent
+      include_sub_features: yes
+      include_management_tools: yes
+    register: iis_install
+  
+  - name: Reboot when Web-Server feature requires it
+    win_reboot:
+      reboot_timeout: 600
+    when: iis_install.reboot_required

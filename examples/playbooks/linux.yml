@@ -1,0 +1,26 @@
+--- 
+
+- name: Install HTTP Server
+  hosts: linux
+  become: yes
+  gather_facts: false
+  tasks:
+  - name: Gather Facts
+    setup: 
+
+  - name: Install httpd
+    yum: name=httpd state=present # present or absent
+  
+  - name: Start httpd
+    service: name=httpd enabled=yes state=started
+  
+  - name: Stop and disable firewalld
+    service:
+      name: firewalld
+      state: stopped
+      enabled: False
+
+  - name: Check that you can connect (GET) to a page and it returns a status 200
+    uri:
+      url: "http://{{ inventory_hostname }}"
+      status_code: 403

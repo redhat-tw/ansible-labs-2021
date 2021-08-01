@@ -1,0 +1,16 @@
+--- 
+
+- name: Debug All
+  hosts: all
+  gather_facts: false
+  serial: 1
+  vars:
+    foo: bar
+  tasks:
+  - name: Debug
+    debug:
+  	var: foo
+
+  - name: Debug
+    debug:
+  	msg: "The variable foo contains {{ foo }}"
