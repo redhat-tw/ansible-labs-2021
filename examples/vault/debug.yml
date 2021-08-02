@@ -1,0 +1,11 @@
+--- 
+
+- name: Debug All
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - name: Get DB Password
+    debug:
+      msg: |
+        DB Username: {{ db_user }} 
+        DB Password: {{ db_password }} 

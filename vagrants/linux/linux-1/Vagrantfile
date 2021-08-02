@@ -2,13 +2,13 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "generic/rhel7"
-  config.vm.box_version = "3.2.12"
+  config.vm.box = "bento/centos-7"
+  config.vm.box_version = "202107.21.0"
   config.vm.network "private_network", ip: "172.16.33.20"
   config.vm.synced_folder "./", "/vagrant"
   config.vm.provider "virtualbox" do |vb|
     vb.name = "linux-1"
-    vb.memory = 4096
-    vb.cpus = 2
+    vb.memory = 2048
+    vb.cpus = 1
   end
 end

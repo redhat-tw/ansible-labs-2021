@@ -4,6 +4,7 @@
   hosts: linux
   become: yes
   gather_facts: false
+  serial: 1
   tasks:
   - name: Gather Facts
     setup: 
@@ -13,7 +14,12 @@
   
   - name: Start httpd
     service: name=httpd enabled=yes state=started
-  
+
+- name: Smoke test HTTP server
+  hosts: linux
+  become: yes
+  gather_facts: false
+  tasks:
   - name: Stop and disable firewalld
     service:
       name: firewalld

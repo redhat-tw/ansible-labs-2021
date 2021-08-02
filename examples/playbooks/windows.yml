@@ -13,8 +13,13 @@
       include_sub_features: yes
       include_management_tools: yes
     register: iis_install
-  
+
   - name: Reboot when Web-Server feature requires it
     win_reboot:
       reboot_timeout: 600
     when: iis_install.reboot_required
+
+  - name: Check that you can connect (GET) to a page and it returns a status 200
+    win_uri:
+      url: "http://{{ inventory_hostname }}"
+      status_code: 200

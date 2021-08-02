@@ -1,5 +1,5 @@
-# RHEL 7
-For RHEL 7 Vagrant we need to run the following commands for creating instance:
+# CentOS 7
+For CentOS 7 Vagrant we need to run the following commands for creating instance:
 
 ```sh
 $ vagrant up
