@@ -2,7 +2,7 @@
 
 * Linux
 
-Run the following commands for learning Windows modules:
+Run the following commands for learning Linux modules:
 
 ```sh
 $ ansible linux -m copy -a "src=/etc/hosts dest=/tmp/hosts"

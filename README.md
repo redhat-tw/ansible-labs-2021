@@ -25,5 +25,5 @@ $ vagrant ssh
 
 Other nodes please refer to the following: 
 
-- [Linux](linux/README.md)
-- [Windows](windows/README.md)
+- [Linux](vagrants/linux/README.md)
+- [Windows](vagrants/windows/README.md)
