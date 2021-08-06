@@ -1,4 +1,10 @@
+---
+
 my_list:
 - bbb
 - 123
 - 456
+
+httpd_port: 80
+ntpserver: tock.stdtime.gov.tw
+repository: https://github.com/bennojoy/mywebapp.git

@@ -1,0 +1,19 @@
+---
+
+- name: Apply common configuration to all nodes
+  hosts: linux
+  become: true
+  roles:
+    - { role: common, tags: common }
+
+- name: Configure and deploy the webservers and application code
+  hosts: webservers
+  become: true
+  roles:
+  - { role: web, tags: web }
+
+- name: Deploy MySQL and configure the databases
+  hosts: dbservers
+  become: true
+  roles:
+    - { role: db, tags: db }
