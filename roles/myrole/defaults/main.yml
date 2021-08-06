@@ -1,5 +1,7 @@
 ---
 
+is_enable_debug: false
+
 linux_password: p@ssw0rd
 
 linux_groups:

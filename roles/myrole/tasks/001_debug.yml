@@ -1,0 +1,13 @@
+---
+
+- name: Debug linux_groups var
+  debug:
+    var: linux_groups
+
+- name: Debug linux_users var
+  debug:
+    var: linux_users
+
+- name: Debug linux_password var
+  debug:
+    var: linux_password
