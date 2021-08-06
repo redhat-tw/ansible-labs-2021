@@ -1,0 +1,7 @@
+---
+
+- name: Run myrole 
+  hosts: localhost
+  gather_facts: false
+  roles:
+  - { role: myrole }

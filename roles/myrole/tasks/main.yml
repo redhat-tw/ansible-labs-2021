@@ -1,1 +1,38 @@
 ---
+
+- name: Debug linux_groups var
+  debug:
+    var: linux_groups
+
+- name: Debug linux_users var
+  debug:
+    var: linux_users
+
+- name: Debug linux_password var
+  debug:
+    var: linux_password
+
+- name: Create groups
+  group:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ linux_groups }}" # with_items
+
+# item: thsrc1
+# item: thsrc2
+# item: thsrc3
+# item: thsrc4
+# item: thsrc5
+
+- name: Create Users 
+  user:
+    name: "{{ item.name }}"
+    state: present
+    password: "{{ linux_password | password_hash('sha512','A512') }}"
+    shell: /bin/bash
+    group: "{{ item.group }}"
+  loop: "{{ linux_users }}"
+
+# item.name: thsrc1, item.group: thsrc1
+# item.name: thsrc2, item.group: thsrc2
+# ...
