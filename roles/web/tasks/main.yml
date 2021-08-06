@@ -1,5 +1,5 @@
 ---
 
-import_tasks: 001_install_httpd.yml
+- import_tasks: 001_install_httpd.yml
 
-import_tasks: 002_copy_code.yml
+- import_tasks: 002_copy_code.yml
