@@ -1,0 +1,8 @@
+---
+
+- name: Run install role 
+  hosts: linux
+  gather_facts: false
+  become: yes
+  roles:
+  - { role: install-httpd }
