@@ -1,0 +1,15 @@
+--- 
+
+- name: cURL HTTP server
+  hosts: localhost
+  gather_facts: false
+  vars:
+    http_urls:
+    - url: "http://{{ inventory_hostname }}"
+      status_code: 200
+  tasks:
+  - name: Check that you can connect (GET) to a page and it returns a status 200
+    uri:
+      url: "{{ item.url }}"
+      status_code: "{{ item.status_code }}"
+    loop: "{{ http_urls }}"
