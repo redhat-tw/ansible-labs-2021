@@ -4,7 +4,3 @@ my_list:
 - bbb
 - 123
 - 456
-
-httpd_port: 80
-ntpserver: tock.stdtime.gov.tw
-ntp_server_cidr: 192.170.40.0/24
