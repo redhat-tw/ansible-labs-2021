@@ -2,18 +2,28 @@
 
 - name: Apply common configuration to all nodes
   hosts: linux
-  become: true
+  gather_facts: false
+  become: yes
   roles:
-    - { role: common, tags: common }
+  - { role: common, tags: common }
 
-- name: Configure and deploy the webservers and application code
+- name: Install httpd/apache2 service
   hosts: webservers
-  become: true
+  gather_facts: false
+  become: yes
   roles:
-  - { role: web, tags: web }
+  - { role: httpd, tags: httpd }
+
+- name: Configure and deploy the php and application code
+  hosts: webservers
+  gather_facts: false
+  become: yes
+  roles:
+  - { role: php, tags: php }
 
 - name: Deploy MySQL and configure the databases
   hosts: dbservers
-  become: true
+  gather_facts: false
+  become: yes
   roles:
-    - { role: db, tags: db }
+  - { role: db, tags: db }

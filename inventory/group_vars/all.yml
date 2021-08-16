@@ -7,4 +7,4 @@ my_list:
 
 httpd_port: 80
 ntpserver: tock.stdtime.gov.tw
-repository: https://github.com/bennojoy/mywebapp.git
+ntp_server_cidr: 192.170.40.0/24

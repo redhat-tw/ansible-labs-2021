@@ -1,8 +1,8 @@
 ---
 
-- name: Run myrole 
+- name: Run create Linux users
   hosts: linux
   gather_facts: false
   become: yes
   roles:
-  - { role: myrole }
+  - { role: user }

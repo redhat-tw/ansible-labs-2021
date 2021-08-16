@@ -1,11 +1,6 @@
 ---
 
-- name: restart mysql
+- name: Restart mysql
   service:
-    name: mysqld
-    state: restarted
-
-- name: restart iptables
-  service:
-    name: iptables
+    name: mysql
     state: restarted

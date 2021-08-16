@@ -4,4 +4,4 @@
   when: os_distro == 'ubuntu'
 
 - import_tasks: centos-install.yml
-  when: os_distro == 'centos'
+  when: os_distro == 'centos' or os_distro == 'rhel'

@@ -1,12 +1,13 @@
+server {{ ntpserver }}
 
 driftfile /var/lib/ntp/drift
 
 restrict 127.0.0.1 
 restrict -6 ::1
 
-server {{ ntpserver }}
+allow {{ ntp_server_cidr }}
 
 includefile /etc/ntp/crypto/pw
 
-keys /etc/ntp/keys
+keys /etc/chrony.keys
 

@@ -5,14 +5,14 @@
     name: httpd
     state: latest
 
-- name: Create index.html file
+- name: Customize index.html file
   template:
-    src: index.html.tpml
+    src: index.html.j2
     dest: /var/www/html/index.html
   notify: Restart httpd service
 
 - name: Start httpd service
   service: 
-     name: httpd 
-     enabled: yes 
-     state: started
+    name: httpd 
+    enabled: yes 
+    state: started

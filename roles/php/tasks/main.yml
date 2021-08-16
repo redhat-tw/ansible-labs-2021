@@ -1,0 +1,28 @@
+---
+
+- name: "yum: Install php modules"
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+   - php 
+   - php-mysql
+   - git
+  when: os_distro == 'centos' or os_distro == 'rhel'
+
+- name: "apt: Install php modules"
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+   - php
+   - libapache2-mod-php
+   - php-mysql
+   - git
+  when: os_distro == 'ubuntu'
+
+- name: Creates the index.php file
+  template:
+    src: index.php.j2
+    dest: /var/www/html/index.php
+

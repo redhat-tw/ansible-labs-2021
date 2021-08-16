@@ -1,53 +1,64 @@
 ---
 
-- name: Install Mysql package
+- name: "apt: Install Mysql package"
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - mysql-server
+  - python3-pymysql
+  when: os_distro == 'ubuntu'
+
+- name: "yum: Install Mysql package"
   yum:
     name: "{{ item }}"
-    state: installed
+    state: present
   with_items:
-   - mysql-server
-   - MySQL-python
-   - libselinux-python
-   - libsemanage-python
-
-- name: Configure SELinux to start mysql on any port
-  seboolean:
-    name: mysql_connect_any
-    state: true
-    persistent: yes
-  when: sestatus.rc != 0
-
-- name: Create Mysql configuration file
-  template:
-    src: my.cnf.j2
-    dest: /etc/my.cnf
-  notify:
-  - restart mysql
+  - mysql-server
+  - python3-pymysql
+  when: os_distro == 'centos' or os_distro == 'rhel'
 
 - name: Start Mysql Service
   service:
-    name: mysqld
+    name: mysql
     state: started
     enabled: yes
 
-- name: insert iptables rule
-  lineinfile:
-    dest: /etc/sysconfig/iptables
-    state: present
-    regexp: "{{ mysql_port }}"
-    insertafter: "^:OUTPUT "
-    line: "-A INPUT -p tcp  --dport {{ mysql_port }} -j  ACCEPT"
-  notify: restart iptables
+- name: Sets the root password
+  mysql_user:
+    name: root
+    password: "{{ mysql_root_password }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  ignore_errors: true
+
+- name: Removes all anonymous user accounts
+  mysql_user:
+    name: ''
+    host_all: yes
+    state: absent
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+
+- name: Removes the MySQL test database
+  mysql_db:
+    name: test
+    state: absent
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
 
 - name: Create Application Database
   mysql_db:
-    name: "{{ dbname }}"
+    name: "{{ db_name }}"
     state: present
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
 
 - name: Create Application DB User
   mysql_user:
-    name: "{{ dbuser }}"
-    password: "{{ upassword }}"
+    name: "{{ db_user }}"
+    password: "{{ db_passwd }}"
     priv: "*.*:ALL"
     host: '%'
     state: present
+    login_user: root
+    login_password: "{{ mysql_root_password }}"

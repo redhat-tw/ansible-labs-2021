@@ -1,5 +1,0 @@
----
-
-dependencies: []
-  # - role: generic/os-family-facts
-  # - role: generic/ping

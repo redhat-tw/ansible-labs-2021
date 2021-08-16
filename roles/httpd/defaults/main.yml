@@ -2,5 +2,6 @@
 
 html_content: |
   Hello World!!
+  This is custom HTML content from Ansible template.
 
 os_distro: "{{ input_os_distro | default('centos') }}"
