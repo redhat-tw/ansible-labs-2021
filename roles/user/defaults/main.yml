@@ -12,13 +12,13 @@ linux_groups:
 - thsrc5
 
 linux_users:
-- name: thscr1
+- name: thsrc1
   group: thsrc1
-- name: thscr2
+- name: thsrc2
   group: thsrc2
-- name: thscr3
+- name: thsrc3
   group: thsrc3
-- name: thscr4
+- name: thsrc4
   group: thsrc4
-- name: thscr5
+- name: thsrc5
   group: thsrc5
