@@ -1,5 +1,7 @@
 ---
 
+os_distro: "{{ input_os_distro | default('centos') }}"
+
 # mysql_root_password: P@ssw0rd
 mysql_port: 3306
 
