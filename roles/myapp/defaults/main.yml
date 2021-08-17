@@ -1,0 +1,4 @@
+---
+
+git_repository: https://github.com/bennojoy/mywebapp.git
+app_dir: /var/www/html/myapp

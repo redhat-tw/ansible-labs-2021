@@ -1,0 +1,19 @@
+---
+
+
+- name: Install apache2 and start
+  apt:
+    name: apache2
+    state: latest
+
+- name: Customize index.html file
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+  notify: Restart apache2 service
+
+- name: Start apache2 service
+  service: 
+    name: apache2 
+    enabled: yes 
+    state: started

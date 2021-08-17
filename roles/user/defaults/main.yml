@@ -1,0 +1,24 @@
+---
+
+is_enable_debug: false
+
+linux_password: p@ssw0rd
+
+linux_groups:
+- thsrc1
+- thsrc2
+- thsrc3
+- thsrc4
+- thsrc5
+
+linux_users:
+- name: thsrc1
+  group: thsrc1
+- name: thsrc2
+  group: thsrc2
+- name: thsrc3
+  group: thsrc3
+- name: thsrc4
+  group: thsrc4
+- name: thsrc5
+  group: thsrc5

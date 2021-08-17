@@ -1,0 +1,6 @@
+---
+
+- name: Copy the code from Git repository
+  git:
+    repo: "{{ git_repository }}"
+    dest: "{{ app_dir }}"

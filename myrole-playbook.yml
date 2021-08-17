@@ -1,8 +1,0 @@
----
-
-- name: Run myrole 
-  hosts: linux
-  gather_facts: false
-  become: yes
-  roles:
-  - { role: myrole }

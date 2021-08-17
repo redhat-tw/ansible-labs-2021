@@ -1,7 +1,0 @@
----
-
-- import_tasks: ubuntu-install.yml
-  when: os_distro == 'ubuntu'
-
-- import_tasks: centos-install.yml
-  when: os_distro == 'centos'

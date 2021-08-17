@@ -1,6 +1,6 @@
 ---
 
-- name: restart ntp
+- name: Restart chrony
   service:
-    name: ntpd
+    name: chronyd
     state: restarted

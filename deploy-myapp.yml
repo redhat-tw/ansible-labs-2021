@@ -1,0 +1,8 @@
+---
+
+- name: Deploy my webapp codes
+  hosts: webservers
+  gather_facts: false
+  become: yes
+  roles:
+  - { role: myapp, tags: myapp }
