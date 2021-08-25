@@ -1,0 +1,27 @@
+---
+
+- name: Check the system via win_ping
+  win_ping:
+  register: ping_result
+  ignore_unreachable: true
+  ignore_errors: true
+  when: ansible_os_family == 'Windows'
+
+- name: Check the system via ping
+  ping:
+  register: ping_result
+  ignore_unreachable: true
+  ignore_errors: true
+  when: ansible_os_family != 'Windows'
+
+- name: Set the failed fact message
+  set_fact:
+    prefail_msg: "{{ inventory_hostname }} connection is disabled or the account is unavailable."
+    fail_msg: "{{ inventory_hostname }} connection is disabled or the account is unavailable."
+    fail_flag: true
+  when: ping_result.unreachable is defined
+
+- name: Fail while server is unreachable
+  fail:
+    msg: "{{ fail_msg }}"
+  when: ping_result.unreachable is defined

@@ -1,0 +1,7 @@
+---
+
+os_distro: "{{ ansible_os_family | default('RedHat') }}"
+
+html_content: |
+  Hello World!!
+  This is custom HTML content from Ansible template.

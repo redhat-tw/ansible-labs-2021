@@ -1,0 +1,30 @@
+---
+
+- include_tasks: 001_debug.yml
+  when: is_enable_debug
+
+- include_tasks: 002_centos-install.yml
+  when:
+  - os_distro == 'RedHat' or os_distro == 'centos'
+  - is_install_httpd
+
+- include_tasks: 002_ubuntu-install.yml
+  when:
+  - os_distro == 'Debian' or os_distro == 'ubuntu'
+  - is_install_httpd
+
+- name: Copy index.html to /var/www/html
+  copy:
+    src: index.html
+    dest: /var/www/html/
+    backup: yes
+  notify:
+  - cURL HTTP index.html
+
+- name: Create about.html file to /var/www/html
+  template:
+    src: index.html.j2
+    dest: /var/www/html/about.html
+    backup: yes
+  notify:
+  - cURL HTTP about.html

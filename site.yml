@@ -5,25 +5,25 @@
   gather_facts: false
   become: yes
   roles:
-  - { role: common, tags: common }
+  - { role: lamp/common, tags: common }
 
 - name: Install httpd/apache2 service
   hosts: webservers
   gather_facts: false
   become: yes
   roles:
-  - { role: httpd, tags: httpd }
+  - { role: lamp/httpd, tags: httpd }
 
 - name: Configure and deploy the php and application code
   hosts: webservers
   gather_facts: false
   become: yes
   roles:
-  - { role: php, tags: php }
+  - { role: lamp/php, tags: php }
 
 - name: Deploy MySQL and configure the databases
   hosts: dbservers
   gather_facts: false
   become: yes
   roles:
-  - { role: db, tags: db }
+  - { role: lamp/db, tags: db }

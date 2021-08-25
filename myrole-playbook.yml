@@ -1,0 +1,16 @@
+---
+
+- name: My Role Playbook
+  hosts: linux
+  become: yes
+  gather_facts: false
+  # tasks:
+  # - name: Print Hello World!
+  #   debug:
+  #     msg: "Hello World!!! THSRC!!"
+  # vars:
+  #   os_distro: ubuntu
+  #   deploy_user: ubuntu
+  roles:
+  # - { role: generic/os-family-facts }
+  - { role: myrole }

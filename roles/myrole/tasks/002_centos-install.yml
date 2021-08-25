@@ -1,0 +1,20 @@
+---
+
+- name: Install httpd from YUM
+  yum:
+    name: httpd
+    state: present
+
+- name: Start httpd service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: Replace httpd listen port
+  replace:
+    path: /etc/httpd/conf/httpd.conf
+    regexp: "^Listen [0-9]*"
+    replace: "Listen {{ httpd_port }}"
+  notify:
+  - Restart httpd service

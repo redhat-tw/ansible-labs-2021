@@ -1,0 +1,23 @@
+---
+
+- name: Restart httpd service
+  service:
+    name: httpd
+    state: restarted
+    enabled: yes
+
+- name: Restart apache2 service
+  service:
+    name: apache2
+    state: restarted
+    enabled: yes
+
+- name: cURL HTTP index.html
+  uri:
+    url: "http://127.0.0.1:{{ httpd_port }}"
+    status_code: 200
+
+- name: cURL HTTP about.html
+  uri:
+    url: "http://127.0.0.1:{{ httpd_port }}/about.html"
+    status_code: 200

@@ -11,9 +11,24 @@ linux_groups:
 - thsrc4
 - thsrc5
 
+linux_groups_one:
+- aaa1
+- aaa2
+- aaa3
+- aaa4
+- aaa5
+
+linux_groups_two:
+- bbb1
+- bbb2
+- bbb3
+- bbb4
+- bbb5
+
 linux_users:
 - name: thsrc1
   group: thsrc1
+  bash: /bin/bash
 - name: thsrc2
   group: thsrc2
 - name: thsrc3

@@ -1,0 +1,17 @@
+---
+
+- name: Print Hello World!
+  debug:
+    msg: "Hello World!!! THSRC!!"
+
+- name: Debug deploy_user vailable
+  debug:
+    var: "deploy_user"
+
+- name: Debug os_distro vailable
+  debug:
+    var: "os_distro"
+
+- name: Debug ansible_os_family vailable
+  debug:
+    var: "ansible_os_family"

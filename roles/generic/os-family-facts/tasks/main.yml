@@ -1,0 +1,6 @@
+---
+
+- name: Gather OS family facts
+  setup:
+    filter: "ansible_os_family"
+  when: not ansible_os_family is defined

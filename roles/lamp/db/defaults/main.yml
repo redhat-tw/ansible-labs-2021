@@ -1,0 +1,11 @@
+---
+
+os_distro: "{{ ansible_os_family | default('RedHat') }}"
+
+# mysql_root_password: P@ssw0rd
+mysql_port: 3306
+
+# create DB example 
+# db_user: foo
+db_name: foo_db
+# db_passwd: r00tme

@@ -1,0 +1,12 @@
+---
+
+is_enable_debug: false
+is_install_httpd: true
+
+os_distro: "{{ ansible_os_family | default('RedHat') }}"
+
+html_content: | 
+  About THSRC html!
+  This is {{ os_distro }} about page!!
+
+httpd_port: 80

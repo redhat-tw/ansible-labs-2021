@@ -1,0 +1,7 @@
+---
+
+- import_tasks: ubuntu-install.yml
+  when: os_distro == 'Debian' or os_distro == 'ubuntu'
+
+- import_tasks: centos-install.yml
+  when: os_distro == 'RedHat' or os_distro == 'centos'

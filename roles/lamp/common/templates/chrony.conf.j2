@@ -1,0 +1,5 @@
+server {{ ntp_server }}
+
+driftfile /var/lib/chrony/drift
+
+allow {{ ntp_server_cidr }}

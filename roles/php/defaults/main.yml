@@ -1,3 +1,0 @@
----
-
-os_distro: "{{ input_os_distro | default('centos') }}"

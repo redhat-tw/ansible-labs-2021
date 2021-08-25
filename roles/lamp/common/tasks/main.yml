@@ -1,0 +1,29 @@
+---
+
+- name: "apt: Install chrony server"
+  apt:
+    name: chrony
+    state: present
+  tags: chrony
+  when: os_distro == 'Debian' or os_distro == 'ubuntu'
+
+- name: "yum: Install chrony server"
+  yum:
+    name: chrony
+    state: present
+  tags: chrony
+  when: os_distro == 'RedHat' or os_distro == 'centos'
+
+- name: Configure chrony file
+  template:
+    src: chrony.conf.j2
+    dest: /etc/chrony.conf
+  tags: chrony
+  notify: Restart chrony
+
+- name: Start the chronyd service
+  service:
+    name: chronyd
+    state: started
+    enabled: yes
+  tags: chrony

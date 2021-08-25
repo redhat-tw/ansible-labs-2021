@@ -11,3 +11,19 @@
 - name: Debug linux_password var
   debug:
     var: linux_password
+
+- name: with_nested
+  debug:
+    msg: "{{ item.0 }} - {{ item.1 }}"
+  with_nested:
+    - "{{ linux_groups_one }}"
+    - "{{ linux_groups_two }}"
+
+# item.0: aaa1, item.1: bbb1
+# item.0: aaa1, item.1: bbb2
+# item.0: aaa1, item.1: bbb3
+# ....
+# item.0: aaa1, item.1: bbb1
+# item.0: aaa1, item.1: bbb2
+# item.0: aaa1, item.1: bbb3
+# ..

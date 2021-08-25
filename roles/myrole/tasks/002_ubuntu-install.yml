@@ -1,0 +1,20 @@
+---
+
+- name: Install apache2 from apt
+  apt:
+    name: apache2
+    state: present
+
+- name: Start apache2 service
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+
+- name: Replace apache2 listen port
+  replace:
+    path: /etc/apache2/ports.conf
+    regexp: "^Listen [0-9]*"
+    replace: "Listen {{ httpd_port }}"
+  notify:
+  - Restart apache2 service
